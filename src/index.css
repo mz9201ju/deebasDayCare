@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* =============================
+🎨 Centralized theme variables
+Change these to reskin the site
+============================= */
+:root {
+    /* Brand = playful daycare pastel */
+    --color-brand-50: 249 247 255;
+    /* #F9F7FF */
+    --color-brand-100: 242 233 255;
+    /* #F2E9FF */
+    --color-brand-200: 233 213 255;
+    /* #E9D5FF */
+    --color-brand-300: 216 180 254;
+    /* #D8B4FE */
+    --color-brand-400: 192 132 252;
+    /* #C084FC */
+    --color-brand-500: 168 85 247;
+    /* #A855F7 */
+    --color-brand-600: 147 51 234;
+    /* #9333EA */
+    --color-brand-700: 126 34 206;
+    /* #7E22CE */
+    --color-brand-800: 107 33 168;
+    /* #6B21A8 */
+    --color-brand-900: 88 28 135;
+    /* #581C87 */
+
+
+    --radius-card: 1.25rem;
+}
+
+
+/* App base look */
+@layer base {
+    html {
+        font-family: theme('fontFamily.body');
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: theme('fontFamily.display');
+    }
+}
+
+
+/* Reusable card */
+@layer components {
+    .card {
+        @apply bg-white shadow-card rounded-[var(--radius-card)] p-6;
+    }
+
+    .pill {
+        @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm bg-brand-100 text-brand-700;
+    }
+}
+
+
+/* Pointer fallback if image fails */
+/* If you want a CSS-only custom cursor fallback: */
+body {
+    cursor: url('/src/assets/cursor.png') 16 16, auto;
+    cursor: none;
+}
+
+/* Ensure links and buttons don’t override with pointer */
+a,
+a:hover,
+a:focus,
+button,
+button:hover,
+button:focus,
+[role="button"] {
+    cursor: none !important;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 8px #ff00ff, 0 0 12px #00ffff, 0 0 16px #ff0000;
+    }
+
+    33% {
+        text-shadow: 0 0 8px #00ffff, 0 0 12px #ff00ff, 0 0 16px #00ff00;
+    }
+
+    66% {
+        text-shadow: 0 0 8px #ff0000, 0 0 12px #00ff00, 0 0 16px #00ffff;
+    }
+
+    100% {
+        text-shadow: 0 0 8px #ff00ff, 0 0 12px #00ffff, 0 0 16px #ff0000;
+    }
+}
+
+@layer utilities {
+  .text-glow-rainbow {
+    color: #fff;
+    text-shadow:
+      0 0 6px #ff00ff,
+      0 0 12px #00ffff,
+      0 0 18px #ff0000,
+      0 0 24px #00ff00;
+    animation: glow 3s linear infinite;
+  }
+}
+
+@keyframes pulseStars {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(255,215,0,0.6)); }
+  50% { filter: drop-shadow(0 0 8px rgba(255,215,0,1)); }
+}
+.star-glow {
+  animation: pulseStars 2s ease-in-out infinite;
+}
