@@ -48,8 +48,44 @@ export default function Footer() {
 
 
 
-                    {/* Tagline */}
-                    <div className="opacity-70">Made with ❤️ for happy kiddos.</div>
+                    {/* Tagline + Socials */}
+                    <div className="flex items-center justify-center gap-3 opacity-80 text-sm">
+                        <span>Made with ❤️ for happy kiddos.</span>
+
+                        <a
+                            href="https://www.facebook.com/deebasdaycare/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-blue-600 transition"
+                            aria-label="Facebook"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="w-5 h-5"
+                            >
+                                <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.5c0-2.4 1.4-3.8 3.6-3.8 1 0 2 .2 2 .2v2.3h-1.1c-1.1 0-1.4.7-1.4 1.3V12H18l-.4 3h-2.7v7A10 10 0 0 0 22 12z" />
+                            </svg>
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/deeba-qadri-33012935/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-blue-700 transition"
+                            aria-label="LinkedIn"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="w-5 h-5"
+                            >
+                                <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM9 8h4.7v2.2h.1c.6-1.1 2-2.2 4.2-2.2 4.5 0 5.3 3 5.3 6.8V24h-5v-7.8c0-1.9 0-4.4-2.7-4.4-2.7 0-3.1 2.1-3.1 4.2V24H9z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>
