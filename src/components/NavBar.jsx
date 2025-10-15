@@ -15,7 +15,7 @@ export default function NavBar() {
                     <span className="text-2xl font-extrabold text-brand-700">
                         {SITE.name}
                     </span>
-                    <span className="hidden sm:inline pill">{SITE.tagline}</span>
+                    <span className="sm:inline pill">{SITE.tagline}</span>
                 </Link>
 
                 {/* Desktop Nav */}
