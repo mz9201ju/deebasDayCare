@@ -12,10 +12,12 @@ export default function Footer() {
                     </div>
 
                     {/* Address + Phone */}
-                    {/* Address + Phone */}
                     <div className="space-y-1 select-none">
                         {/* 📍 Address → Opens Google Maps */}
                         <p
+                            href="https://www.google.com/maps/search/?api=1&query=11115+NE+2nd+St,+Bellevue,+WA+98004"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center justify-center sm:justify-start gap-2 cursor-pointer hover:text-brand-700 transition"
                             onClick={() =>
                                 window.open(
@@ -24,9 +26,8 @@ export default function Footer() {
                                 )
                             }
                         >
-                            📍 <span>15219 SE 1st St, Bellevue, WA 98007</span>
+                            <span>📍 15219 SE 1st St, Bellevue, WA 98007</span>
                         </p>
-
                         {/* 📞 Phone → Opens Dialer (mobile only) */}
                         <p
                             className="flex items-center justify-center sm:justify-start gap-2 cursor-pointer font-medium text-brand-600 hover:text-brand-700 transition"

@@ -20,7 +20,7 @@ export default function ContactUs() {
                         <textarea className="border rounded-lg px-3 py-2" rows={4} placeholder="Tell us about your kiddo :)" />
                     </div>
                     <button type="button" className="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700">
-                        Send (placeholder)
+                        Send
                     </button>
                     <p className="text-sm text-brand-700/80">
                         Or reach us at {SITE.contact.phone}
