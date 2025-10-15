@@ -37,7 +37,7 @@ export default function Services() {
                         }}
                     >
                         {/* ✨ lighter overlay for text readability */}
-                        <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/20 group-active:bg-black/20" />
+                        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm transition-all duration-500 group-hover:bg-white/60"></div>
 
                         {/* 🖼️ Zoom on hover/tap */}
                         <div
@@ -51,7 +51,8 @@ export default function Services() {
                         />
 
                         {/* 💬 Text (glows on hover/tap) */}
-                        <div className="relative z-10 p-6 text-center backdrop-blur-[2px]">
+                        {/* Foreground content */}
+                        <div className="relative z-10 p-6 text-center text-white drop-shadow-[0_3px_1px_rgba(0,0,0,1)]">
                             <h3
                                 className="
                   text-3xl font-extrabold text-white transition-all duration-500 
@@ -61,10 +62,7 @@ export default function Services() {
                                 {x.t}
                             </h3>
                             <p
-                                className="
-                  mt-3 text-lg font-semibold text-white transition-all duration-500 
-                  group-hover:text-glow-rainbow group-active:text-glow-rainbow
-                "
+                                className="text-lg text-white/95 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
                             >
                                 {x.d}
                             </p>
