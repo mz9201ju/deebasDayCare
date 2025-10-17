@@ -1,7 +1,7 @@
 // Centralized app config + content theming
 // Change this single file to reskin or rename the site
 export const SITE = {
-    name: "deeba's Daycare",
+    name: "Deeba's Daycare",
     tagline: 'Play • Learn • Grow',
     hero: {
         title: 'A warm place for little stars ✨',
