@@ -5,7 +5,7 @@ export const SITE = {
     tagline: 'Play • Learn • Grow',
     hero: {
         title: 'A warm place for little stars ✨',
-        subtitle: "It can be not easy adjusting your work schedule around the school hours of your children.At Deeba's Daycare, we offer exceptional home day care services, so the little ones are properly taken care of during your busy day.Our extended hours accommodate any situation, allowing parents with early morning shifts to commute faster or those with long nights to finish paperwork related to work.",
+        subtitle: "It can be not easy adjusting your work schedule around the school hours of your children.At Deeba's Daycare, we offer exceptional home day care services, so the little ones are properly taken care of during your busy day.",
     },
     contact: {
         phone: '(206) 331-1792',
