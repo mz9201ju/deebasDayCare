@@ -8,28 +8,27 @@
 Change these to reskin the site
 ============================= */
 :root {
-    /* Brand = playful daycare pastel */
-    --color-brand-50: 249 247 255;
-    /* #F9F7FF */
-    --color-brand-100: 242 233 255;
-    /* #F2E9FF */
-    --color-brand-200: 233 213 255;
-    /* #E9D5FF */
-    --color-brand-300: 216 180 254;
-    /* #D8B4FE */
-    --color-brand-400: 192 132 252;
-    /* #C084FC */
-    --color-brand-500: 168 85 247;
-    /* #A855F7 */
-    --color-brand-600: 147 51 234;
-    /* #9333EA */
-    --color-brand-700: 126 34 206;
-    /* #7E22CE */
-    --color-brand-800: 107 33 168;
-    /* #6B21A8 */
-    --color-brand-900: 88 28 135;
-    /* #581C87 */
-
+    /* Brand = modern warm elegance (sunset gold + rose + mocha) */
+    --color-brand-50: 255 247 240;
+    /* #FFF7F0 – soft ivory */
+    --color-brand-100: 255 238 221;
+    /* #FFEEDD – peach mist */
+    --color-brand-200: 255 220 188;
+    /* #FFD CBC – mellow coral glow */
+    --color-brand-300: 255 196 150;
+    /* #FFC496 – warm apricot */
+    --color-brand-400: 255 168 112;
+    /* #FFA870 – tangerine rose */
+    --color-brand-500: 238 136 84;
+    /* #EE8854 – burnt honey (primary) */
+    --color-brand-600: 204 102 60;
+    /* #CC663C – spiced amber */
+    --color-brand-700: 165 78 44;
+    /* #A54E2C – copper mocha */
+    --color-brand-800: 120 55 36;
+    /* #783724 – roasted chestnut */
+    --color-brand-900: 75 36 24;
+    /* #4B2418 – dark espresso */
 
     --radius-card: 1.25rem;
 }
@@ -99,21 +98,29 @@ button:focus,
 }
 
 @layer utilities {
-  .text-glow-rainbow {
-    color: #fff;
-    text-shadow:
-      0 0 6px #ff00ff,
-      0 0 12px #00ffff,
-      0 0 18px #ff0000,
-      0 0 24px #00ff00;
-    animation: glow 3s linear infinite;
-  }
+    .text-glow-rainbow {
+        color: #fff;
+        text-shadow:
+            0 0 6px #ff00ff,
+            0 0 12px #00ffff,
+            0 0 18px #ff0000,
+            0 0 24px #00ff00;
+        animation: glow 3s linear infinite;
+    }
 }
 
 @keyframes pulseStars {
-  0%, 100% { filter: drop-shadow(0 0 2px rgba(255,215,0,0.6)); }
-  50% { filter: drop-shadow(0 0 8px rgba(255,215,0,1)); }
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.6));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1));
+    }
 }
+
 .star-glow {
-  animation: pulseStars 2s ease-in-out infinite;
+    animation: pulseStars 2s ease-in-out infinite;
 }
