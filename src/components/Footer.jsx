@@ -44,6 +44,13 @@ export default function Footer() {
                         >
                             📞 <span>(206) 331-1792</span>
                         </p>
+                        {/* Hours of Operation */}
+                        <p className="mt-2 text-sm text-brand-700/90">
+                            🕒 <span className="font-semibold">Hours: Mon–Fri 7 AM – 6 PM</span>
+                        </p>
+                        <p className="mt-2 text-sm text-brand-700/90">
+                            🕒 <span className="font-semibold">Hours: Sat-Sun Closed</span>
+                        </p>
                     </div>
 
 
