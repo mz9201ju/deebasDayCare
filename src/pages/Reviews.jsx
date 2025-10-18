@@ -143,20 +143,39 @@ export default function Reviews() {
                             key={i}
                             onClick={() => setForm({ ...form, rating: i + 1 })}
                             className={`w-6 h-6 cursor-pointer ${i < form.rating
-                                    ? "text-yellow-400 fill-yellow-400"
-                                    : "text-gray-300"
+                                ? "text-yellow-400 fill-yellow-400"
+                                : "text-gray-300"
                                 }`}
                         />
                     ))}
                 </div>
+                <div className="flex flex-col sm:flex-row gap-3 mt-3">
+                    <button
+                        disabled={loading}
+                        className="flex-1 px-6 py-2 rounded-full bg-brand-500 text-white font-semibold
+               shadow-lg hover:bg-brand-600 active:scale-95 transition"
+                    >
+                        {loading ? "Saving..." : "Submit Review"}
+                    </button>
 
-                <button
-                    disabled={loading}
-                    className="mt-3 w-full px-6 py-2 rounded-full bg-brand-500 text-white font-semibold
-                     shadow-lg hover:bg-brand-600 active:scale-95 transition"
-                >
-                    {loading ? "Saving..." : "Submit Review"}
-                </button>
+                    <button
+                        type="button"
+                        onClick={() => window.open("https://www.yelp.com/biz/deebas-daycare-bellevue", "_blank")}
+                        className="flex-1 px-6 py-2 rounded-full bg-brand-100 text-brand-700 font-semibold
+               shadow-lg hover:bg-brand-200 active:scale-95 transition"
+                    >
+                        Leave a Yelp Review ❤️
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => window.open("https://www.google.com/search?q=deeba%27s+daycare+bellevue+reviews&sca_esv=6e20e6c2949c4c68&sxsrf=AE3TifNoaOQXCOhmXQ8FZQnkAvvH2sz60Q%3A1760774279599&source=hp&ei=h0jzaJf2Iaup0PEP-KmzyQw&iflsig=AOw8s4IAAAAAaPNWl4ZGK9FGwpmJpbXoX7FaVZ-aBnFZ&oq=deeb&gs_lp=Egdnd3Mtd2l6IgRkZWViKgIIADIEECMYJzIIEC4YgAQYsQMyCxAAGIAEGLEDGIMBMggQABiABBixAzIIEC4YgAQYsQMyCBAuGIAEGLEDMggQABiABBixAzIFEAAYgAQyDhAAGIAEGLEDGIMBGIoFMgUQABiABEj8FFC9AljaBnABeACQAQCYAX-gAdoDqgEDMC40uAEDyAEA-AEBmAIFoAL0A6gCCsICBxAjGCcY6gLCAg0QIxiABBgnGIoFGOoCwgILEC4YgAQYsQMYgwHCAg4QLhiABBixAxjRAxjHAcICDhAuGIAEGLEDGIMBGIoFwgIREC4YgAQYsQMY0QMYgwEYxwHCAgsQLhiABBjRAxjHAcICCxAuGIAEGLEDGNQCwgIFEC4YgATCAg4QLhiABBjHARiOBRivAcICCxAuGIAEGMcBGK8BmAMJ8QUxovdUQ8W5G5IHAzEuNKAHmEayBwMwLjS4B-oDwgcFMC4zLjLIBxE&sclient=gws-wiz#lrd=0x54906df14668864f:0xea90a14206bf5646,1,,,,", "_blank")}
+                        className="flex-1 px-6 py-2 rounded-full bg-brand-100 text-brand-700 font-semibold
+               shadow-lg hover:bg-brand-200 active:scale-95 transition"
+                    >
+                        Leave a Google Review ❤️
+                    </button>
+                </div>
             </form>
         </Section>
     );
