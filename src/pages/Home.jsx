@@ -15,24 +15,30 @@ export default function Home() {
                 }}
             >
                 {/* 🔥 CHANGED: Added strong fade overlay */}
-                <div className="absolute inset-0 bg-white/60"></div>
+                <div className="absolute inset-0 bg-black/60"></div>
 
                 {/* Keep content visible above overlay */}
-                <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-brand-800">
-                        {SITE.hero.title}
-                    </h1>
-                    <p
-                        className="mt-3 text-brand-700 font-semibold max-w-2xl mx-auto"
+                <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+                    <h1
+                        className="mt-16 text-3xl sm:text-5xl font-extrabold text-white drop-shadow-lg leading-tight"
                         style={{
                             textShadow:
                                 "0 0 8px #ff00ff, 0 0 12px #00ffff, 0 0 16px #ff0000, 0 0 20px #00ff00",
                             animation: "glow 3s linear infinite",
                         }}
                     >
-                        {SITE.hero.subtitle}
+                        {SITE.hero.title}
+                    </h1>
+
+                    <p
+                        className="mt-4 text-lg sm:text-2xl font-semibold text-white leading-relaxed max-w-[700px]"
+                    >
+                        It can be not easy adjusting your work schedule around the school hours of your children.
+                        At Deeba's Daycare, we offer exceptional home day care services, so the little ones
+                        are properly taken care of during your busy day.
                     </p>
                 </div>
+
             </div>
 
             {/* Quick highlights using reusable Section */}
