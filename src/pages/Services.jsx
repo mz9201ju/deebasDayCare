@@ -28,42 +28,36 @@ export default function Services() {
                 {items.map((x) => (
                     <div
                         key={x.t}
-                        className="relative rounded-xl2 overflow-hidden shadow-card group transition-transform duration-700 ease-out"
+                        className="relative rounded-2xl overflow-hidden shadow-card group transition-transform duration-700 ease-out"
                         style={{
-                            backgroundImage: `url(${x.img})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
                             minHeight: "240px",
                         }}
                     >
-                        {/* ✨ lighter overlay for text readability */}
-                        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm transition-all duration-500 group-hover:bg-white/60"></div>
-
-                        {/* 🖼️ Zoom on hover/tap */}
+                        {/* 🌅 Background image with smooth fade */}
                         <div
                             className="absolute inset-0 transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
                             style={{
-                                backgroundImage: `url(${x.img})`,
+                                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${x.img})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                zIndex: 0,
+                                filter: "brightness(0.9)",
                             }}
                         />
 
-                        {/* 💬 Text (glows on hover/tap) */}
-                        {/* Foreground content */}
-                        <div className="relative z-10 p-6 text-center text-white drop-shadow-[0_3px_1px_rgba(0,0,0,1)]">
+                        {/* ✨ Soft light overlay for readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-all duration-700 group-hover:from-black/60 group-hover:via-black/30"></div>
+
+                        {/* 💬 Foreground text */}
+                        <div className="relative z-10 p-6 text-center text-white">
                             <h3
                                 className="
-                  text-3xl font-extrabold text-white transition-all duration-500 
-                  group-hover:text-glow-rainbow group-active:text-glow-rainbow
-                "
+              text-3xl font-extrabold text-white transition-all duration-500
+              group-hover:text-glow-rainbow group-active:text-glow-rainbow
+            "
                             >
                                 {x.t}
                             </h3>
-                            <p
-                                className="text-lg text-white/95 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
-                            >
+                            <p className="text-lg text-white/90 leading-relaxed mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                                 {x.d}
                             </p>
                         </div>
@@ -71,5 +65,6 @@ export default function Services() {
                 ))}
             </div>
         </Section>
+
     );
 }
