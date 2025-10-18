@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import Section from "../components/Section";
 import image1 from "../assets/daycare1.jpg";
 import image2 from "../assets/daycare2.jpg";
+import image3 from "../assets/daycare3.jpg";
 
 export default function Gallery() {
     const photos = [
-        { src: image1, alt: "Kids playing together" },
-        { src: image2, alt: "Kids reading books" },
+        { src: image1, alt: "Kids Room Pic 1" },
+        { src: image2, alt: "Kids Room Pic 2" },
+        { src: image3, alt: "Teaching Teaching" },
     ];
 
     // State for lightbox

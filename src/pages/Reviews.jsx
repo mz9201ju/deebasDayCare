@@ -172,8 +172,8 @@ export default function Reviews() {
                             key={i}
                             onClick={() => setForm({ ...form, rating: i + 1 })}
                             className={`w-6 h-6 cursor-pointer ${i < form.rating
-                                    ? "text-yellow-400 fill-yellow-400"
-                                    : "text-gray-300"
+                                ? "text-yellow-400 fill-yellow-400"
+                                : "text-gray-300"
                                 }`}
                         />
                     ))}
@@ -235,10 +235,11 @@ export default function Reviews() {
 
                 {/* 💾 Submit + External Review Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mt-3">
+                    {/* Submit Review */}
                     <button
                         disabled={loading || !isCaptchaValid}
                         className={`flex-1 px-6 py-2 rounded-full font-semibold shadow-lg active:scale-95 transition
-                            ${loading || !isCaptchaValid
+            ${loading || !isCaptchaValid
                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                                 : "bg-brand-500 text-white hover:bg-brand-600"
                             }`}
@@ -246,6 +247,7 @@ export default function Reviews() {
                         {loading ? "Saving..." : "Submit Review"}
                     </button>
 
+                    {/* Yelp Review Button */}
                     <button
                         type="button"
                         onClick={() =>
@@ -254,12 +256,16 @@ export default function Reviews() {
                                 "_blank"
                             )
                         }
-                        className="flex-1 px-6 py-2 rounded-full bg-brand-100 text-brand-700 font-semibold
-                            shadow-lg hover:bg-brand-200 active:scale-95 transition"
+                        className="flex-1 flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-[#d32323] text-white font-semibold shadow-lg hover:bg-[#b71c1c] active:scale-95 transition"
                     >
-                        Leave a Yelp Review ❤️
+                        {/* Yelp SVG Icon */}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                            <path d="M20.74 14.74c.47.47.47 1.22 0 1.69l-3.54 3.54a1.2 1.2 0 0 1-1.69 0l-2.73-2.73a1.2 1.2 0 0 1 .3-1.95l6.02-2.64a1.2 1.2 0 0 1 1.64.09ZM9.69 14.4l2.64 6.02a1.2 1.2 0 0 1-1.95 1.3L6.65 18.8a1.2 1.2 0 0 1 0-1.69l2.43-2.43a1.2 1.2 0 0 1 .61-.28Zm1.27-11.87 2.43 6.02a1.2 1.2 0 0 1-1.95 1.3L6.65 8.8a1.2 1.2 0 0 1 0-1.69l2.43-2.43a1.2 1.2 0 0 1 1.88.45Zm9.55 5.3-6.02 2.64a1.2 1.2 0 0 1-1.95-.3L10.54 7.4a1.2 1.2 0 0 1 1.95-1.3l6.02 2.64a1.2 1.2 0 0 1 .09 1.64ZM4.8 9.69l6.02 2.64a1.2 1.2 0 0 1 .3 1.95L8.8 17.35a1.2 1.2 0 0 1-1.69 0L3.57 13.8a1.2 1.2 0 0 1 0-1.69l1.23-1.23Z" />
+                        </svg>
+                        Yelp Review
                     </button>
 
+                    {/* Google Review Button */}
                     <button
                         type="button"
                         onClick={() =>
@@ -268,12 +274,19 @@ export default function Reviews() {
                                 "_blank"
                             )
                         }
-                        className="flex-1 px-6 py-2 rounded-full bg-brand-100 text-brand-700 font-semibold
-                            shadow-lg hover:bg-brand-200 active:scale-95 transition"
+                        className="flex-1 flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-white text-[#4285F4] font-semibold border border-gray-300 shadow-lg hover:bg-gray-100 active:scale-95 transition"
                     >
-                        Leave a Google Review ❤️
+                        {/* Google "G" Logo */}
+                        <svg className="w-5 h-5" viewBox="0 0 24 24">
+                            <path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-.9 2.4-2 3.1v2.6h3.2c1.9-1.7 3-4.2 3-7 0-.6-.1-1.3-.2-1.9H12z" />
+                            <path fill="#34A853" d="M6.6 14.4l-.9.7-2.6 2C4.8 20 8.1 22 12 22c2.4 0 4.4-.8 5.9-2.2l-3.2-2.6c-.9.6-2.1 1-2.7 1-2.1 0-3.9-1.4-4.5-3.3l-1-.5z" />
+                            <path fill="#FBBC05" d="M3.1 8.7A9 9 0 0 0 3 12c0 1.1.2 2.1.6 3l3-2.4a5.4 5.4 0 0 1-.3-1.6c0-.6.1-1.1.3-1.6L3.1 8.7z" />
+                            <path fill="#4285F4" d="M12 5.1c1.3 0 2.5.4 3.4 1.2l2.5-2.5C16.4 2.4 14.4 1.7 12 1.7 8.1 1.7 4.8 3.8 3.1 7l3.3 2.6c.6-1.9 2.4-3.3 4.5-3.3Z" />
+                        </svg>
+                        Google Review
                     </button>
                 </div>
+
             </form>
         </Section>
     );
