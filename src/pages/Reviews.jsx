@@ -92,49 +92,52 @@ export default function Reviews() {
         <Section title="Parent Reviews" subtitle="What families say about us 💕">
             {/* 🌟 Reviews List */}
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {reviews.map((r, i) => (
-                    <div
-                        key={i}
-                        className="
-                            relative bg-gradient-to-br from-brand-100 to-brand-200
-                            rounded-2xl shadow-lg p-6 text-center hover:scale-[1.03]
-                            transition-transform duration-500 ease-out
-                        "
-                    >
-                        {/* ⭐ Star Rating */}
-                        <div className="flex justify-center mb-4">
-                            {Array.from({ length: r.rating }).map((_, idx) => (
-                                <Star
-                                    key={idx}
-                                    className="text-yellow-400 fill-yellow-400 w-5 h-5 mx-[1px] star-glow"
-                                />
-                            ))}
-                        </div>
-
-                        {/* 💬 Review Text */}
-                        <p className="text-brand-900 leading-relaxed italic">
-                            “{r.text}”
-                        </p>
-
-                        {/* 👩‍👧 Reviewer */}
-                        <footer className="mt-4 text-brand-700 font-semibold">
-                            — {r.name || "Anonymous"}
-                        </footer>
-
-                        {/* 🌈 Glow border */}
-                        <span
+                {[...reviews] // make a copy so we don't mutate the original array
+                    .reverse() // reverses the order → newest first
+                    .map((r, i) => (
+                        <div
+                            key={i}
                             className="
-                                absolute inset-0 rounded-2xl border-2 border-transparent
-                                group-hover:border-brand-400 transition-all
-                            "
-                            style={{
-                                boxShadow:
-                                    "0 0 12px rgba(168,85,247,0.3), 0 0 24px rgba(147,51,234,0.2)",
-                            }}
-                        ></span>
-                    </div>
-                ))}
+                    relative bg-gradient-to-br from-brand-100 to-brand-200
+                    rounded-2xl shadow-lg p-6 text-center hover:scale-[1.03]
+                    transition-transform duration-500 ease-out
+                "
+                        >
+                            {/* ⭐ Star Rating */}
+                            <div className="flex justify-center mb-4">
+                                {Array.from({ length: r.rating }).map((_, idx) => (
+                                    <Star
+                                        key={idx}
+                                        className="text-yellow-400 fill-yellow-400 w-5 h-5 mx-[1px] star-glow"
+                                    />
+                                ))}
+                            </div>
+
+                            {/* 💬 Review Text */}
+                            <p className="text-brand-900 leading-relaxed italic">
+                                “{r.text}”
+                            </p>
+
+                            {/* 👩‍👧 Reviewer */}
+                            <footer className="mt-4 text-brand-700 font-semibold">
+                                — {r.name || "Anonymous"}
+                            </footer>
+
+                            {/* 🌈 Glow border */}
+                            <span
+                                className="
+                        absolute inset-0 rounded-2xl border-2 border-transparent
+                        group-hover:border-brand-400 transition-all
+                    "
+                                style={{
+                                    boxShadow:
+                                        "0 0 12px rgba(168,85,247,0.3), 0 0 24px rgba(147,51,234,0.2)",
+                                }}
+                            ></span>
+                        </div>
+                    ))}
             </div>
+
 
             {/* ✍️ Add Review Form */}
             <form
