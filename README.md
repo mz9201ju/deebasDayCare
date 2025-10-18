@@ -10,10 +10,13 @@ This project showcases a cute, responsive daycare website featuring smiles, craf
 - 🏠 **Home Page** — Friendly introduction with playful colors and imagery.  
 - 🧩 **Services** — Sections for Infant Care, Toddler Care, and Music Classes for Kids.  
 - 📸 **Gallery** — Grid view of happy daycare photos with a full-size lightbox preview.  
-- 💬 **Reviews** — Yelp-linked button for parents to leave reviews.  
+- 💬 **Reviews** —  
+  - Yelp-linked button for parents to leave reviews.  
+  - Integrated **comment system** to submit and display reviews directly on the site.  
+  - External API calls to **save and retrieve comments** from a Cloudflare Worker database.  
 - 📍 **Footer Section** — Displays address, phone, and a smart click feature:  
   - Click on address → opens Google Maps  
-  - Click on phone → prompts call (on mobile)
+  - Click on phone → prompts call (on mobile)  
 - 🎨 **Pastel Brand Palette** — Gentle lavender and cream theme for a soothing visual experience.  
 - ⚡ **Responsive Design** — Optimized for mobile, tablet, and desktop.  
 - 🧠 **Modern Stack** — Powered by Vite + React 18 + Tailwind v4.  
@@ -29,6 +32,7 @@ This project showcases a cute, responsive daycare website featuring smiles, craf
 | **Vite** | Lightning-fast dev & build |
 | **TailwindCSS v4** | Styling and theme system |
 | **Lucide-React** | Icon library |
+| **Cloudflare Workers + KV** | External API & Database for saving/retrieving comments |
 | **GitHub Pages** | Hosting & deployment |
 
 ---
