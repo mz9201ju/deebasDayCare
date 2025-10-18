@@ -42,20 +42,43 @@ export default function Home() {
             </div>
 
             {/* Quick highlights using reusable Section */}
-            <Section title="Why families choose us">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                        { t: 'Warm caregivers', d: 'CPR-certified, patient, and kind.' },
-                        { t: 'Play-based learning', d: 'STEM toys, story time, arts & crafts.' },
-                        { t: 'Healthy snacks', d: 'Nut-safe options and hydration.' },
-                    ].map((x) => (
-                        <div key={x.t} className="card">
-                            <h3 className="font-bold text-brand-800">{x.t}</h3>
-                            <p className="text-brand-700/80 mt-1">{x.d}</p>
-                        </div>
-                    ))}
+            <Section>
+                <div className="flex justify-center">
+                    <div className="card p-6 rounded-2xl shadow-lg bg-gradient-to-br from-brand-100 to-brand-200 text-center max-w-xl">
+                        <h3 className="text-2xl font-bold text-brand-800 mb-4">
+                            What Makes Us Special
+                        </h3>
+
+                        <ul className="space-y-3 text-brand-700/90">
+                            <li>
+                                <span className="font-semibold text-brand-800">
+                                    Certified extracurricular activities:
+                                </span>{" "}
+                                Engaging programs including rotating ballet, cooking, art, and yoga classes.
+                            </li>
+                            <li>
+                                <span className="font-semibold text-brand-800">
+                                    Zero screen time:
+                                </span>{" "}
+                                We focus on play, learning, and social interaction — no devices.
+                            </li>
+                            <li>
+                                <span className="font-semibold text-brand-800">
+                                    Potty training:
+                                </span>{" "}
+                                Gentle and consistent support to help children develop independence.
+                            </li>
+                            <li>
+                                <span className="font-semibold text-brand-800">
+                                    Kindergarten preparedness:
+                                </span>{" "}
+                                Early learning in Math, English Language Arts, and Science.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </Section>
+
         </div>
     )
 }
