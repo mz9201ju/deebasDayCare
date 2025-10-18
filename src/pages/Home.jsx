@@ -20,7 +20,7 @@ export default function Home() {
                 {/* Keep content visible above overlay */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
                     <h1
-                        className="mt-16 text-3xl sm:text-5xl font-extrabold text-white drop-shadow-lg leading-tight"
+                        className="mt-2 text-3xl sm:text-5xl font-extrabold text-white drop-shadow-lg leading-tight"
                         style={{
                             textShadow:
                                 "0 0 8px #ff00ff, 0 0 12px #00ffff, 0 0 16px #ff0000, 0 0 20px #00ff00",
