@@ -1,33 +1,70 @@
+import { useState, useEffect } from "react";
 import Section from "../components/Section";
-import { Star } from "lucide-react"; // optional icon for stars
+import { Star } from "lucide-react";
+
+// ✅ Change this to your deployed Worker URL
+const API_URL = "https://gh-ai-proxy.omer-mnsu.workers.dev/reviews";
 
 export default function Reviews() {
-    const reviews = [
-        {
-            name: "Jennifer D.",
-            text: "My 3 children went to Deebas Daycare over the past 16yrs. \
-            They are like family to us. They always took excellent care of my \
-            children and my children love them. They are wonderful people and an \
-            amazing Daycare. I highly recommend Deebas Daycare!",
-            rating: 5,
-        },
-        {
-            name: "",
-            text: "We are very grateful for the care and support provided to our son by Deeba’s daycare. He was there from the age of 4 months until he started kindergarten. They did a fantastic job of preparing him for schoool.",
-            rating: 5,
-        },
-        {
-            name: "",
-            text: "I highly recommend Deeba’s daycare. My son loves it there. They are loving and provide exceptional care!",
-            rating: 5,
-        },
-    ];
+    // State for reviews list
+    const [reviews, setReviews] = useState([]);
+    // Form data
+    const [form, setForm] = useState({ name: "", text: "", rating: 5 });
+    // Loading state
+    const [loading, setLoading] = useState(false);
 
+    /* =====================================================
+       🧠 Fetch reviews from KV (on mount)
+       ===================================================== */
+    useEffect(() => {
+        async function loadReviews() {
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                if (data.ok && data.reviews) setReviews(data.reviews);
+            } catch (err) {
+                console.error("❌ Error loading reviews:", err);
+            }
+        }
+        loadReviews();
+    }, []);
+
+    /* =====================================================
+       💾 Handle submit
+       ===================================================== */
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!form.name || !form.text) return alert("Please fill in all fields");
+
+        setLoading(true);
+        try {
+            const res = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+                // Add new review instantly
+                setReviews((prev) => [data.review, ...prev]);
+                setForm({ name: "", text: "", rating: 5 });
+            } else {
+                alert("Error saving review");
+            }
+        } catch (err) {
+            console.error("❌ Error submitting review:", err);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    /* =====================================================
+       🎨 Render
+       ===================================================== */
     return (
-        <Section
-            title="Parent Reviews"
-            subtitle="What families say about us 💕"
-        >
+        <Section title="Parent Reviews" subtitle="What families say about us 💕">
+            {/* 🌟 Reviews List */}
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {reviews.map((r, i) => (
                     <div
@@ -55,10 +92,10 @@ export default function Reviews() {
 
                         {/* 👩‍👧 Reviewer */}
                         <footer className="mt-4 text-brand-700 font-semibold">
-                            — {r.name}
+                            — {r.name || "Anonymous"}
                         </footer>
 
-                        {/* 🌈 Animated glow border (cute effect) */}
+                        {/* 🌈 Animated glow border */}
                         <span
                             className="
                 absolute inset-0 rounded-2xl border-2 border-transparent
@@ -73,24 +110,54 @@ export default function Reviews() {
                 ))}
             </div>
 
-            {/* 💫 Call-to-action footer */}
-            <div className="mt-12 text-center">
-                <p className="text-brand-700 text-lg">
-                    Have a wonderful experience with us?
-                </p>
-                <a
-                    href="https://www.yelp.com/biz/deebas-daycare-bellevue"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-    inline-block mt-3 px-6 py-2 rounded-full bg-brand-500 text-white font-semibold
-    shadow-lg hover:bg-brand-600 active:scale-95 transition
-  "
-                >
+            {/* ✍️ Add Review Form */}
+            <form
+                onSubmit={handleSubmit}
+                className="mt-12 max-w-md mx-auto bg-brand-50 p-6 rounded-2xl shadow-lg"
+            >
+                <h3 className="text-brand-800 font-bold mb-4 text-lg">
                     Leave a Review ❤️
-                </a>
+                </h3>
 
-            </div>
+                <input
+                    type="text"
+                    placeholder="Your full name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full mb-3 px-4 py-2 rounded-lg border border-brand-200"
+                />
+
+                <textarea
+                    placeholder="Write your experience..."
+                    value={form.text}
+                    onChange={(e) => setForm({ ...form, text: e.target.value })}
+                    className="w-full mb-3 px-4 py-2 rounded-lg border border-brand-200 h-24"
+                />
+
+                <label className="block mb-2 text-brand-700 text-sm">
+                    Rating:
+                </label>
+                <div className="flex justify-center mb-3">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                            key={i}
+                            onClick={() => setForm({ ...form, rating: i + 1 })}
+                            className={`w-6 h-6 cursor-pointer ${i < form.rating
+                                    ? "text-yellow-400 fill-yellow-400"
+                                    : "text-gray-300"
+                                }`}
+                        />
+                    ))}
+                </div>
+
+                <button
+                    disabled={loading}
+                    className="mt-3 w-full px-6 py-2 rounded-full bg-brand-500 text-white font-semibold
+                     shadow-lg hover:bg-brand-600 active:scale-95 transition"
+                >
+                    {loading ? "Saving..." : "Submit Review"}
+                </button>
+            </form>
         </Section>
     );
 }
