@@ -22,6 +22,7 @@ This project showcases a cute, responsive daycare website featuring smiles, craf
 - 🧠 **Modern Stack** — Powered by Vite + React 18 + Tailwind v4.  
 - 🧰 **CI/CD Ready** — Includes GitHub Pages deploy workflow.
 
+
 ---
 
 ## 🗂️ Tech Stack
