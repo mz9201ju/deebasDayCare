@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import CuteCursor from './components/CuteCursor'
+import PlayfulBackground from './components/PlayfulBackground'
 
 
 // Pages
@@ -15,6 +16,7 @@ import ContactUs from './pages/ContactUs'
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-brand-50">
+      <div className="animated-gradient"><PlayfulBackground/></div>
       {/* ✨ Motion cursor overlay (uses requestAnimationFrame) */}
       <CuteCursor />
 

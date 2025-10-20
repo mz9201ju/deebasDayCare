@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -123,4 +124,217 @@ button:focus,
 
 .star-glow {
     animation: pulseStars 2s ease-in-out infinite;
+}
+
+/* 🌈 BackGround animation */
+
+.kids-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* 🌈 Soft pastel animated gradient */
+.animated-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ffdce3, #eaf8ff, #fff8d8, #e7ffe6);
+    background-size: 400% 400%;
+    animation: gradientShift 30s ease infinite;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 🌟 Stars twinkling softly */
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+/* ☁️ Clouds drifting */
+.cloud {
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: cloudDrift linear infinite;
+    opacity: 0.8;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    top: -20px;
+    left: 30px;
+}
+
+.cloud::after {
+    top: -10px;
+    right: 40px;
+}
+
+@keyframes cloudDrift {
+    0% {
+        transform: translateX(-200px);
+    }
+
+    100% {
+        transform: translateX(120vw);
+    }
+}
+
+/* 🎈 Balloons + Toys floating upward */
+.toy {
+    position: absolute;
+    bottom: -80px;
+    border-radius: 50%;
+    opacity: 0.85;
+    animation: floatToy ease-in-out infinite;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes floatToy {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+    }
+}
+
+.toy.balloon {
+    border-radius: 50% 50% 45% 45%;
+    position: relative;
+}
+
+.toy.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 2px;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%);
+}
+
+.toy.cube {
+    border-radius: 6px;
+    transform: rotate(15deg);
+    box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toy.teddy {
+    border-radius: 50%;
+    background: #ffb6b6 !important;
+    position: relative;
+}
+
+.toy.teddy::before,
+.toy.teddy::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background: #ffb6b6;
+    border-radius: 50%;
+    top: -20%;
+}
+
+.toy.teddy::before {
+    left: -10%;
+}
+
+.toy.teddy::after {
+    right: -10%;
+}
+
+.toy.ball {
+    background: radial-gradient(circle at 30% 30%, white, var(--color, #ffca6c));
+    border: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================
+   🧸 FIX VISIBILITY / STACKING CONTEXT ISSUES
+   ========================================================== */
+
+/* 1️⃣ Keep animated background behind everything */
+.kids-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    /* not -1, avoids burying other layers */
+    pointer-events: none;
+    /* allows clicking through */
+}
+
+/* 2️⃣ Each child of kids-bg stays behind */
+.kids-bg>* {
+    position: absolute;
+    z-index: 0;
+}
+
+/* 3️⃣ Make sure main content stacks above the background */
+body,
+main,
+header,
+footer,
+section,
+.navbar,
+#root,
+.storybook-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* 4️⃣ Optional: ensure menus or modals stay on top */
+.burger-wrapper,
+.modal,
+.dropdown,
+.overlay {
+    position: relative;
+    z-index: 1000;
 }
