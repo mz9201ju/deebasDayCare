@@ -1,24 +1,62 @@
 import Section from "../components/Section";
-import infintcare from "../assets/infintcare.jpg";
+import yougaclass from "../assets/yougaclass.jpg";
 import toddlercare from "../assets/toddlercare.jpg";
 import musickids from "../assets/musickids.jpg";
+import spanishclass from "../assets/spanishclass.jpg";
+import gymclass from "../assets/gymclass.jpg";
+import danceclass from "../assets/danceclass.jpg";
 
 export default function Services() {
     const items = [
         {
-            t: "Infant Care",
-            d: "When we care for your infant, you can be sure that your little one will receive qualified and caring attention. Our staff members at Deeba's Daycare are trained and experienced in all aspects of infant care. We genuinely love what we do, so you can rest assured that your child is safe, comfortable, and clean with our professional child care service. Our home day care specialists ask about allergies and other environmental factors that may affect your child's health. We keep a close eye on your child at all times. We help with early child development and help your child socialize well with their peers. To reserve a spot for your infant or toddler care, contact us at Deeba's Daycare in Bellevue, WA.",
-            img: infintcare,
-        },
-        {
             t: "Toddler Care",
-            d: "Individual care and attention allow toddlers to feel safe and secure when taking their first steps and speaking their first words. Our toddler care program offers stimulating activities and group interactions that encourage play and exploration. At our licensed day care, toddlers learn through sensory experiences emphasizing the environment and their relationships. We balance group interaction with individual attention to help toddlers build socialization, cognitive, language, and motor skills, self-esteem, and self-help skills. When you bring your child to the best day care center, you can rest assured that they will be able to take advantage of the preschool preparation needed to grow.",
+            d: `Our toddler care program provides a fun, supportive environment where your child can explore, grow, and gain independence. Experienced and attentive caregivers guide each toddler through their developmental milestones with patience, encouragement, and love.
+            
+            Engaging activities like story time, sensory play, music, art, and outdoor exploration help build language, motor, and social-emotional skills. We partner closely with families, sharing daily updates on your child’s routines, meals, moods, and progress, so you always feel connected to their day.`,
             img: toddlercare,
         },
         {
-            t: "Music for Kids",
-            d: "When you allow your child to play music, their lives can change forever. Music doesn’t discriminate and will always bring people together. Music classes for kids offer the opportunity to meet new people and become friends. At Deeba's Daycare in Bellevue, WA, we specialize in quality music lessons, offering early education to children interested in playing an instrument.",
+            t: "Spanish Classes",
+            d: `Our Spanish classes introduce toddlers and preschoolers to a new language in a fun, playful way through music, movement, games, and storytelling. Led by a dedicated Spanish instructor, these weekly classes help children build basic vocabulary, improve listening skills, and gain early exposure to different cultures.
+            
+            With a focus on repetition and everyday language, our Spanish program supports memory, communication, and curiosity—laying a strong foundation for bilingual learning in the future.`,
+            img: spanishclass,
+        },
+        {
+            t: "Music Classes",
+            d: `Our music classes are filled with joyful sounds, movement, and creativity that get kids excited to sing, clap, and explore rhythm.
+            
+            Led by a talented music instructor every Friday, each class is themed around the seasons and holidays, helping children connect music to the world around them.
+            
+            Music supports early brain development, boosts memory, and encourages self-expression—making it one of the happiest and most enriching parts of our week!`,
             img: musickids,
+        },
+        {
+            t: "Yoga Classes",
+            d: `Every Tuesday, we welcome a skilled yoga instructor to lead calming, playful yoga sessions designed just for kids. 
+            
+            The classes loosely follow seasonal themes, using imaginative poses like “falling leaves” or “stretching sunflowers” to keep little ones engaged.
+            
+            Yoga helps children build strength, balance, and focus, while also promoting mindfulness and emotional regulation—all in a fun, lighthearted setting.`,
+            img: yougaclass,
+        },
+        {
+            t: "Gym Classes",
+            d: `Every Wednesday, we bring in a specialized gym teacher to lead high-energy classes that get kids moving, stretching, and building strength.
+            
+            Each class is themed around the seasons and holidays—think pumpkin crawls in fall or egg-hunt relays in spring—making fitness fun and fresh every time.
+            
+            These classes support motor skill development, teamwork, and confidence, helping children stay active and engaged in a playful, supportive setting.`,
+            img: gymclass,
+        },
+        {
+            t: "Dance Classes",
+            d: `Our dance classes take place every Thursday and are all about movement, rhythm, and fun!
+            
+            Led by a vibrant instructor, kids explore different dance styles through playful routines that follow seasonal themes—like snowflake dances in winter or sunshine shuffles in summer.
+            
+            Dance helps little ones improve coordination, balance, and confidence, all while expressing themselves and having a great time with their friends.`,
+            img: danceclass,
         },
     ];
 
@@ -50,14 +88,11 @@ export default function Services() {
                         {/* 💬 Foreground text */}
                         <div className="relative z-10 p-6 text-center text-white">
                             <h3
-                                className="
-              text-3xl font-extrabold text-white transition-all duration-500
-              group-hover:text-glow-rainbow group-active:text-glow-rainbow
-            "
+                                className="text-3xl font-extrabold text-white transition-all duration-500 group-hover:text-glow-rainbow group-active:text-glow-rainbow"
                             >
                                 {x.t}
                             </h3>
-                            <p className="text-lg text-white/90 leading-relaxed mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                            <p className="whitespace-pre-line text-lg text-white/90 leading-relaxed mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                                 {x.d}
                             </p>
                         </div>

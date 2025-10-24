@@ -5,7 +5,10 @@ export const SITE = {
     tagline: 'Early learning Center',
     hero: {
         title: 'A warm place for little stars ✨',
-        subtitle: "It can be not easy adjusting your work schedule around the school hours of your children.At Deeba's Daycare, we offer exceptional home day care services, so the little ones are properly taken care of during your busy day.",
+        subtitle: `At our childcare center, we believe in creating a nurturing and enriching environment where every child is valued, respected, and supported in their journey of growth and development.
+        
+        Our philosophy is rooted in the understanding that each child is unique, with their own set of strengths, interests, and learning styles.
+        `,
     },
     contact: {
         phone: '(206) 331-1792',
