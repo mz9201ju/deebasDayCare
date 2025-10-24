@@ -20,7 +20,7 @@ export default function Footer() {
                             className="flex items-center justify-center sm:justify-start gap-2 cursor-pointer hover:text-brand-700 transition"
                             onClick={() =>
                                 window.open(
-                                    "https://www.google.com/maps/@47.6093918,-122.1362333,3a,75y,168.69h,90t/data=!3m7!1e1!3m5!1sNun-tI9Txz7EgHf4cLQb0g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DNun-tI9Txz7EgHf4cLQb0g%26yaw%3D168.69!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
+                                    "https://www.google.com/maps/place/15216+SE+1st+St,+Bellevue,+WA+98007/@47.609577,-122.1388333,17z/data=!3m1!4b1!4m6!3m5!1s0x54906c3548afcb7d:0x5e788931c8bfb046!8m2!3d47.609577!4d-122.1362584!16s%2Fg%2F11snrb2zgl?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
                                     "_blank"
                                 )
                             }
