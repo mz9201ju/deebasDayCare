@@ -1,4 +1,4 @@
-# 👶 Deeba's Daycare
+# 👶 Deeba's Daycare!
 
 Welcome to **Deeba’s Daycare** — a warm, creative, and family-friendly web experience built with **React + Vite + TailwindCSS**.  
 This project showcases a cute, responsive daycare website featuring smiles, crafts, and playtime moments for every little star 🌟.
