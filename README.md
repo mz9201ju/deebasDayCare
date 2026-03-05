@@ -50,6 +50,11 @@ src/
 - Content/data is isolated in `src/content`.
 - Global app configuration lives in `src/lib/config.js`.
 - SEO behavior is centralized in `src/components/Seo.jsx`.
+- Responsive styling is split by concern:
+  - Mobile styles live in `src/styles/mobile.css`.
+  - Desktop styles live in `src/styles/desktop.css`.
+  - Shared/global tokens and base styles stay in `src/index.css`.
+- Keep React logic separate from styling logic. Prefer semantic class names in JSX and keep breakpoint behavior inside CSS files.
 
 ## Local Development
 

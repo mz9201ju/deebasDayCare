@@ -1,0 +1,22 @@
+/* Desktop-only image behavior: fill the full container box. */
+@media (min-width: 768px) {
+    .home-hero-media {
+        width: min(100%, 49rem);
+        min-height: 28rem;
+        margin-inline: auto;
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .service-card-media {
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .gallery-thumb-image {
+        height: 16rem;
+        object-fit: cover;
+    }
+}

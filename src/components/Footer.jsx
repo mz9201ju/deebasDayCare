@@ -55,7 +55,14 @@ export default function Footer() {
 
                     {/* Tagline + Socials */}
                     <div className="flex items-center justify-center gap-3 opacity-80 text-sm">
-                        <span>Made with ❤️ for happy kiddos.</span>
+                        <a
+                            href="https://www.omerzahid.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="footer-credit-3d hover:text-brand-700 transition"
+                        >
+                            Made with ❤️ for happy kiddos.
+                        </a>
 
                         <a
                             href="https://www.facebook.com/deebasdaycare/"

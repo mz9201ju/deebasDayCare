@@ -43,11 +43,9 @@ export default function Home() {
             />
             {/* Hero */}
             <div
-                className="relative rounded-xl2 text-center overflow-hidden bg-center bg-no-repeat h-200 transition-all duration-1000 ease-in-out"
+                className="home-hero-media relative rounded-xl2 text-center overflow-hidden bg-center bg-no-repeat h-200 transition-all duration-1000 ease-in-out"
                 style={{
                     backgroundImage: `url(${currentBg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
                 }}
             >
                 {/* Warm tint overlay to keep text readable without making the hero look gray */}

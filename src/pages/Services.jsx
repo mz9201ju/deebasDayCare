@@ -22,11 +22,9 @@ export default function Services() {
                     >
                         {/* 🌅 Background image with smooth fade */}
                         <div
-                            className="absolute inset-0 transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
+                            className="service-card-media absolute inset-0 transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
                             style={{
                                 backgroundImage: `linear-gradient(to bottom, rgba(120,53,15,0.12), rgba(245,158,11,0.22)), url(${service.image})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
                                 filter: "brightness(1.02) saturate(1.08)",
                             }}
                         />

@@ -43,7 +43,7 @@ export default function Gallery() {
                         alt={photo.alt}
                         loading="lazy"
                         onClick={() => setSelectedIndex(i)} // open full image
-                        className="w-full h-48 object-cover rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
+                        className="gallery-thumb-image w-full rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
                     />
                 ))}
             </div>

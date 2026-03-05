@@ -33,6 +33,19 @@ Maintain a clean, production-ready daycare website with strict separation of con
 - `src/content`: static data arrays.
 - `src/lib`: config + helpers.
 
+## Separation Rules
+
+- Keep logic separated by layer:
+	- UI/presentation in `src/components` and `src/pages`.
+	- API/business logic in `src/services`.
+	- Static content in `src/content`.
+	- Shared config/utilities in `src/lib`.
+- Keep responsive CSS separated by concern:
+	- Mobile-only rules in `src/styles/mobile.css`.
+	- Desktop-only rules in `src/styles/desktop.css`.
+	- Shared/global base rules in `src/index.css`.
+- Avoid mixing breakpoint-specific inline styles in JSX when a CSS class can express the behavior.
+
 ## Exit Criteria
 
 - No dead imports/files introduced.

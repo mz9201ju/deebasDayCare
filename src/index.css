@@ -297,6 +297,29 @@ Change these to reskin the site
     border: 3px solid rgba(255, 255, 255, 0.7);
 }
 
+@keyframes footerCredit3DPulse {
+    0%,
+    100% {
+        transform: perspective(700px) translateZ(0) scale(1) rotateX(0deg);
+    }
+
+    50% {
+        transform: perspective(700px) translateZ(24px) scale(1.06) rotateX(6deg);
+    }
+}
+
+.footer-credit-3d {
+    display: inline-block;
+    transform-style: preserve-3d;
+    animation: footerCredit3DPulse 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-credit-3d {
+        animation: none;
+    }
+}
+
 /* ==========================================================
    🧸 FIX VISIBILITY / STACKING CONTEXT ISSUES
    ========================================================== */

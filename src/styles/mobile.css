@@ -1,0 +1,19 @@
+/* Mobile-only image behavior: keep existing look untouched. */
+@media (max-width: 767px) {
+    .home-hero-media {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .service-card-media {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .gallery-thumb-image {
+        height: 12rem;
+        object-fit: cover;
+    }
+}

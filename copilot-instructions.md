@@ -19,6 +19,11 @@ powershell -ExecutionPolicy Bypass
 - Keep business/API logic under `src/services`.
 - Keep static content/data under `src/content`.
 - Keep shared app config and utilities under `src/lib`.
+- Keep responsive styles separated by file:
+	- Mobile rules in `src/styles/mobile.css`.
+	- Desktop rules in `src/styles/desktop.css`.
+	- Shared/global styles in `src/index.css`.
+- Keep business logic out of styling files and keep breakpoint behavior out of inline style objects when possible.
 
 ## Refactor Standards
 
