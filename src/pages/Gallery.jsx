@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Section from "../components/Section";
-import image1 from "../assets/daycare1.jpg";
-import image2 from "../assets/daycare2.jpg";
-import image3 from "../assets/daycare3.jpg";
+import Seo from "../components/Seo";
+import { galleryPhotos } from "../content/gallery";
 
 export default function Gallery() {
-    const photos = [
-        { src: image1, alt: "Kids Room Pic 1" },
-        { src: image2, alt: "Kids Room Pic 2" },
-        { src: image3, alt: "Teaching Teaching" },
-    ];
-
-    // State for lightbox
     const [selectedIndex, setSelectedIndex] = useState(null);
 
-    // Keyboard navigation (← → Esc)
+    const nextImage = useCallback((e) => {
+        if (e) e.stopPropagation();
+        setSelectedIndex((prev) => (prev + 1) % galleryPhotos.length);
+    }, []);
+
+    const prevImage = useCallback((e) => {
+        if (e) e.stopPropagation();
+        setSelectedIndex((prev) => (prev - 1 + galleryPhotos.length) % galleryPhotos.length);
+    }, []);
+
     useEffect(() => {
         const handleKey = (e) => {
             if (selectedIndex === null) return;
@@ -24,26 +25,22 @@ export default function Gallery() {
         };
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
-    }, [selectedIndex]);
-
-    const nextImage = (e) => {
-        if (e) e.stopPropagation();
-        setSelectedIndex((prev) => (prev + 1) % photos.length);
-    };
-
-    const prevImage = (e) => {
-        if (e) e.stopPropagation();
-        setSelectedIndex((prev) => (prev - 1 + photos.length) % photos.length);
-    };
+    }, [nextImage, prevImage, selectedIndex]);
 
     return (
-        <Section title="Gallery" subtitle="Smiles, crafts, and playtime moments.">
+        <>
+            <Seo
+                title="Gallery"
+                description="Take a look at our daycare spaces, activities, and playful learning moments for children in Bellevue."
+                path="/gallery"
+            />
+            <Section title="Gallery" subtitle="Smiles, crafts, and playtime moments.">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {photos.map((p, i) => (
+                {galleryPhotos.map((photo, i) => (
                     <img
                         key={i}
-                        src={p.src}
-                        alt={p.alt}
+                        src={photo.src}
+                        alt={photo.alt}
                         loading="lazy"
                         onClick={() => setSelectedIndex(i)} // open full image
                         className="w-full h-48 object-cover rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
@@ -58,8 +55,8 @@ export default function Gallery() {
                     onClick={() => setSelectedIndex(null)}
                 >
                     <img
-                        src={photos[selectedIndex].src}
-                        alt={photos[selectedIndex].alt}
+                        src={galleryPhotos[selectedIndex].src}
+                        alt={galleryPhotos[selectedIndex].alt}
                         className="max-h-[90vh] max-w-[90vw] rounded-2xl shadow-2xl border border-white/20"
                     />
 
@@ -89,6 +86,7 @@ export default function Gallery() {
                     </button>
                 </div>
             )}
-        </Section>
+            </Section>
+        </>
     );
 }

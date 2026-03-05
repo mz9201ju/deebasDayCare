@@ -1,52 +1,105 @@
-# 👶 Deeba's Daycare
+# Deeba's Daycare
 
-Welcome to **Deeba’s Daycare** — a warm, creative, and family-friendly web experience built with **React + Vite + TailwindCSS**.  
-This project showcases a cute, responsive daycare website featuring smiles, crafts, and playtime moments for every little star 🌟.
+Modern React + Vite website for Deeba's Daycare in Bellevue, WA.
 
----
+## Windows Command Requirement
 
-## ✨ Features
+Use `npm.cmd` instead of `npm` for all commands in this project.
 
-- 🏠 **Home Page** — Friendly introduction with playful colors and imagery.  
-- 🧩 **Services** — Sections for Infant Care, Toddler Care, and Music Classes for Kids.  
-- 📸 **Gallery** — Grid view of happy daycare photos with a full-size lightbox preview.  
-- 💬 **Reviews** —  
-  - Yelp-linked button for parents to leave reviews.  
-  - Integrated **comment system** to submit and display reviews directly on the site.  
-  - External API calls to **save and retrieve comments** from a Cloudflare Worker database.  
-- 📍 **Footer Section** — Displays address, phone, and a smart click feature:  
-  - Click on address → opens Google Maps  
-  - Click on phone → prompts call (on mobile)  
-- 🎨 **Pastel Brand Palette** — Gentle lavender and cream theme for a soothing visual experience.  
-- ⚡ **Responsive Design** — Optimized for mobile, tablet, and desktop.  
-- 🧠 **Modern Stack** — Powered by Vite + React 18 + Tailwind v4.  
-- 🧰 **CI/CD Ready** — Includes GitHub Pages deploy workflow.
+If you need to run plain `npm`, execute PowerShell with bypass policy first:
 
+```powershell
+powershell -ExecutionPolicy Bypass
+```
 
----
+## What This Project Does
 
-## 🗂️ Tech Stack
+- Shows daycare information, services, gallery, contact flow, and parent reviews.
+- Uses route-level code splitting for faster initial page loads.
+- Uses centralized SEO metadata and per-page SEO tags.
+- Uses service modules for API access and content modules for page data.
+- Includes optimized JPEG assets and lazy image loading in gallery pages.
 
-| Tool | Purpose |
-|------|----------|
-| **React 18** | UI Components |
-| **Vite** | Lightning-fast dev & build |
-| **TailwindCSS v4** | Styling and theme system |
-| **Lucide-React** | Icon library |
-| **Cloudflare Workers + KV** | External API & Database for saving/retrieving comments |
-| **GitHub Pages** | Hosting & deployment |
+## Tech Stack
 
----
+- React 19
+- Vite 7
+- React Router
+- Tailwind CSS
+- ESLint
 
-## 🚀 Local Development
+## Project Structure
 
-```bash
-# Clone repo
-git clone https://github.com/your-username/deebas-daycare.git
-cd deebas-daycare
+```text
+src/
+  components/      # Reusable UI (NavBar, Footer, Section, Seo, Cursor, Background)
+  content/         # Static website content/data (services and gallery)
+  lib/             # Global config and utilities (site settings, captcha)
+  pages/           # Route-level page components
+  services/        # API/business logic layer (reviews API)
+  main.jsx         # App entry
+  App.jsx          # Layout + routes
+```
 
-# Install dependencies
-npm install
+## Separation Of Concerns
 
-# Start dev server
-npm run dev
+- UI components live in `src/components`.
+- Business/API logic lives in `src/services`.
+- Content/data is isolated in `src/content`.
+- Global app configuration lives in `src/lib/config.js`.
+- SEO behavior is centralized in `src/components/Seo.jsx`.
+
+## Local Development
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+Build and preview:
+
+```powershell
+npm.cmd run build
+npm.cmd run preview
+```
+
+Lint and build (combined):
+
+```powershell
+npm.cmd run lint; npm.cmd run build
+```
+
+## SEO Implemented
+
+- Base metadata in `index.html` (description, robots, Open Graph, Twitter card).
+- Dynamic per-page metadata via `Seo` component:
+  - title
+  - description
+  - canonical URL
+  - Open Graph and Twitter metadata
+- Structured data (`ChildCare` schema) on the home page.
+- `public/robots.txt` for crawler directives.
+- `public/sitemap.xml` for route discovery by search engines.
+
+## Routing And Deployment
+
+- App routing uses `BrowserRouter` with `basename={import.meta.env.BASE_URL}`.
+- GitHub Pages SPA fallback is enabled in `.github/workflows/pages.yaml` by copying `dist/index.html` to `dist/404.html`.
+- This allows direct visits to routes like `/services` and `/gallery` to resolve correctly on deploy.
+
+## Performance Improvements Implemented
+
+- Route-level lazy loading with `React.lazy` and `Suspense`.
+- Removed dead assets and unused starter files.
+- Replaced heavy animated cursor image with lightweight CSS cursor.
+- Compressed large JPG assets (major payload reduction).
+- Added reduced-motion CSS fallback for accessibility/performance.
+
+## Notes
+
+- Reviews are fetched/saved through the configured Cloudflare Worker endpoint in `src/lib/config.js`.
+- For production deploys on GitHub Pages, base path is configured in `vite.config.js`.
+- If the repository name or custom domain changes, update:
+  - `src/lib/config.js` (`SITE.seo.siteUrl`)
+  - `public/robots.txt` (Sitemap URL)
+  - `public/sitemap.xml` (all `<loc>` URLs)

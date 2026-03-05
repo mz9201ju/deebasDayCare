@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mz9201ju.github.io/deebasDayCare/sitemap.xml

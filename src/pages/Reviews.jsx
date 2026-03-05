@@ -1,57 +1,40 @@
 import { useState, useEffect } from "react";
 import Section from "../components/Section";
 import { Star } from "lucide-react";
-
-// ✅ Your deployed Cloudflare Worker endpoint
-const API_URL = "https://gh-ai-proxy.omer-mnsu.workers.dev/reviews";
+import Seo from "../components/Seo";
+import { generateCaptcha } from "../lib/captcha";
+import { createReview, fetchReviews } from "../services/reviewsService";
 
 export default function Reviews() {
-    // 🧠 State for fetched reviews
     const [reviews, setReviews] = useState([]);
-
-    // 📝 Form fields
     const [form, setForm] = useState({ name: "", text: "", rating: 5 });
-
-    // ⏳ Loading state
     const [loading, setLoading] = useState(false);
+    const [captcha, setCaptcha] = useState("");
+    const [userCaptcha, setUserCaptcha] = useState("");
+    const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
-    // 🔐 CAPTCHA states
-    const [captcha, setCaptcha] = useState(""); // generated random code
-    const [userCaptcha, setUserCaptcha] = useState(""); // user-entered value
-    const [isCaptchaValid, setIsCaptchaValid] = useState(false); // validation flag
-
-    /* =====================================================
-       🧠 Fetch reviews from KV (on mount)
-       ===================================================== */
     useEffect(() => {
         async function loadReviews() {
             try {
-                const res = await fetch(API_URL);
-                const data = await res.json();
-                if (data.ok && data.reviews) setReviews(data.reviews);
+                const loadedReviews = await fetchReviews();
+                setReviews(loadedReviews);
             } catch (err) {
-                console.error("❌ Error loading reviews:", err);
+                console.error("Error loading reviews:", err);
             }
         }
-        loadReviews();
 
-        // ✅ Generate a random 6-character CAPTCHA when page loads
-        setCaptcha(Math.random().toString(36).substring(2, 8).toUpperCase());
+        loadReviews();
+        setCaptcha(generateCaptcha());
     }, []);
 
-    /* =====================================================
-       💾 Handle submit
-       ===================================================== */
     async function handleSubmit(e) {
         e.preventDefault();
 
-        // 🚫 Stop submission if required fields are empty
         if (!form.name || !form.text) {
             alert("Please fill in all fields");
             return;
         }
 
-        // 🚫 Block if CAPTCHA not verified yet
         if (!isCaptchaValid) {
             alert("Please verify the CAPTCHA before submitting your review.");
             return;
@@ -59,42 +42,30 @@ export default function Reviews() {
 
         setLoading(true);
         try {
-            const res = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
-            });
-            const data = await res.json();
-
-            if (data.ok) {
-                // ✅ Add new review instantly
-                setReviews((prev) => [data.review, ...prev]);
-                setForm({ name: "", text: "", rating: 5 });
-
-                // ♻️ Reset CAPTCHA after successful submission
-                setCaptcha(Math.random().toString(36).substring(2, 8).toUpperCase());
-                setUserCaptcha("");
-                setIsCaptchaValid(false);
-            } else {
-                alert("Error saving review");
-            }
+            const savedReview = await createReview(form);
+            setReviews((prev) => [savedReview, ...prev]);
+            setForm({ name: "", text: "", rating: 5 });
+            setCaptcha(generateCaptcha());
+            setUserCaptcha("");
+            setIsCaptchaValid(false);
         } catch (err) {
-            console.error("❌ Error submitting review:", err);
+            console.error("Error submitting review:", err);
+            alert("Error saving review");
         } finally {
             setLoading(false);
         }
     }
 
-    /* =====================================================
-       🎨 Render
-       ===================================================== */
     return (
-        <Section title="Parent Reviews" subtitle="What families say about us 💕">
-            {/* 🌟 Reviews List */}
+        <>
+            <Seo
+                title="Reviews"
+                description="Read family testimonials and leave a review for Deeba's Daycare in Bellevue."
+                path="/reviews"
+            />
+            <Section title="Parent Reviews" subtitle="What families say about us 💕">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {[...reviews] // make a copy so we don't mutate the original array
-                    .reverse() // reverses the order → newest first
-                    .map((r, i) => (
+                {reviews.map((r, i) => (
                         <div
                             key={i}
                             className="
@@ -138,8 +109,6 @@ export default function Reviews() {
                     ))}
             </div>
 
-
-            {/* ✍️ Add Review Form */}
             <form
                 onSubmit={handleSubmit}
                 className="mt-12 max-w-md mx-auto bg-brand-50 p-6 rounded-2xl shadow-lg"
@@ -148,7 +117,6 @@ export default function Reviews() {
                     Leave a Review ❤️
                 </h3>
 
-                {/* 🧍 Name Field */}
                 <input
                     type="text"
                     placeholder="Your full name"
@@ -157,7 +125,6 @@ export default function Reviews() {
                     className="w-full mb-3 px-4 py-2 rounded-lg border border-brand-200"
                 />
 
-                {/* 💬 Review Text */}
                 <textarea
                     placeholder="Write your experience..."
                     value={form.text}
@@ -165,7 +132,6 @@ export default function Reviews() {
                     className="w-full mb-3 px-4 py-2 rounded-lg border border-brand-200 h-24"
                 />
 
-                {/* ⭐ Rating Selector */}
                 <label className="block mb-2 text-brand-700 text-sm">
                     Rating:
                 </label>
@@ -182,9 +148,7 @@ export default function Reviews() {
                     ))}
                 </div>
 
-                {/* 🔐 CAPTCHA Validation */}
                 <div className="mb-4 text-center">
-                    {/* CAPTCHA Display + Refresh */}
                     <div className="flex justify-center items-center gap-3">
                         <div
                             className="px-4 py-2 bg-brand-200 rounded-lg font-mono tracking-widest text-brand-800 select-none shadow-md"
@@ -194,20 +158,12 @@ export default function Reviews() {
                         <button
                             type="button"
                             className="px-3 py-1 bg-brand-100 text-brand-700 rounded-lg text-sm hover:bg-brand-200 transition"
-                            onClick={() =>
-                                setCaptcha(
-                                    Math.random()
-                                        .toString(36)
-                                        .substring(2, 8)
-                                        .toUpperCase()
-                                )
-                            }
+                            onClick={() => setCaptcha(generateCaptcha())}
                         >
                             🔄 Refresh
                         </button>
                     </div>
 
-                    {/* User Input for CAPTCHA */}
                     <input
                         type="text"
                         placeholder="Enter above text"
@@ -218,7 +174,6 @@ export default function Reviews() {
                         className="mt-2 w-full px-4 py-2 rounded-lg border border-brand-200 text-center"
                     />
 
-                    {/* Verify Button */}
                     <button
                         type="button"
                         onClick={() => {
@@ -236,9 +191,7 @@ export default function Reviews() {
                     </button>
                 </div>
 
-                {/* 💾 Submit + External Review Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mt-3">
-                    {/* Submit Review */}
                     <button
                         disabled={loading || !isCaptchaValid}
                         className={`flex-1 px-6 py-2 rounded-full font-semibold shadow-lg active:scale-95 transition
@@ -250,7 +203,6 @@ export default function Reviews() {
                         {loading ? "Saving..." : "Submit Review"}
                     </button>
 
-                    {/* Yelp Review Button */}
                     <button
                         type="button"
                         onClick={() =>
@@ -261,14 +213,12 @@ export default function Reviews() {
                         }
                         className="flex-1 flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-[#d32323] text-white font-semibold shadow-lg hover:bg-[#b71c1c] active:scale-95 transition"
                     >
-                        {/* Yelp SVG Icon */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                             <path d="M20.74 14.74c.47.47.47 1.22 0 1.69l-3.54 3.54a1.2 1.2 0 0 1-1.69 0l-2.73-2.73a1.2 1.2 0 0 1 .3-1.95l6.02-2.64a1.2 1.2 0 0 1 1.64.09ZM9.69 14.4l2.64 6.02a1.2 1.2 0 0 1-1.95 1.3L6.65 18.8a1.2 1.2 0 0 1 0-1.69l2.43-2.43a1.2 1.2 0 0 1 .61-.28Zm1.27-11.87 2.43 6.02a1.2 1.2 0 0 1-1.95 1.3L6.65 8.8a1.2 1.2 0 0 1 0-1.69l2.43-2.43a1.2 1.2 0 0 1 1.88.45Zm9.55 5.3-6.02 2.64a1.2 1.2 0 0 1-1.95-.3L10.54 7.4a1.2 1.2 0 0 1 1.95-1.3l6.02 2.64a1.2 1.2 0 0 1 .09 1.64ZM4.8 9.69l6.02 2.64a1.2 1.2 0 0 1 .3 1.95L8.8 17.35a1.2 1.2 0 0 1-1.69 0L3.57 13.8a1.2 1.2 0 0 1 0-1.69l1.23-1.23Z" />
                         </svg>
                         Yelp Review
                     </button>
 
-                    {/* Google Review Button */}
                     <button
                         type="button"
                         onClick={() =>
@@ -279,7 +229,6 @@ export default function Reviews() {
                         }
                         className="flex-1 flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-white text-[#4285F4] font-semibold border border-gray-300 shadow-lg hover:bg-gray-100 active:scale-95 transition"
                     >
-                        {/* Google "G" Logo */}
                         <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-.9 2.4-2 3.1v2.6h3.2c1.9-1.7 3-4.2 3-7 0-.6-.1-1.3-.2-1.9H12z" />
                             <path fill="#34A853" d="M6.6 14.4l-.9.7-2.6 2C4.8 20 8.1 22 12 22c2.4 0 4.4-.8 5.9-2.2l-3.2-2.6c-.9.6-2.1 1-2.7 1-2.1 0-3.9-1.4-4.5-3.3l-1-.5z" />
@@ -291,6 +240,7 @@ export default function Reviews() {
                 </div>
 
             </form>
-        </Section>
+            </Section>
+        </>
     );
 }

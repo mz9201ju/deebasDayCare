@@ -1,86 +1,84 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 export default function PlayfulBackground() {
-    const [elements, setElements] = useState([]);
+    const clouds = useMemo(
+        () =>
+            Array.from({ length: 5 }).map((_, i) => ({
+                id: `cloud-${i}`,
+                top: `${10 + Math.random() * 70}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${40 + Math.random() * 20}s`,
+            })),
+        []
+    );
 
-    useEffect(() => {
-        // 🎨 Generate random floating toys / shapes
-        const shapeTypes = [
-            "balloon",
-            "cube",
-            "ball",
-            "star",
-            "heart",
-            "teddy",
-            "cloud",
-            "kite",
-            "rocket",
-            "rainbow",
-        ];
+    const stars = useMemo(
+        () =>
+            Array.from({ length: 40 }).map((_, i) => ({
+                id: `star-${i}`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+            })),
+        []
+    );
 
-        const toys = Array.from({ length: 20 }).map((_, i) => {
-            const size = 40 + Math.random() * 60;
-            const left = Math.random() * 100;
-            const delay = Math.random() * 15;
-            const duration = 18 + Math.random() * 20;
-            const color = `hsl(${Math.random() * 360}, 85%, 70%)`;
-            const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+    const toys = useMemo(() => {
+        const shapeTypes = ["balloon", "cube", "ball", "teddy"];
 
-            // Optional: add subtle 3D depth by random Z offset
-            const depth = Math.random() * 200 - 100; // -100px to +100px
-            const rotate = Math.random() * 360;
-
-            return { id: i, size, left, delay, duration, color, type, depth, rotate };
-        });
-
-        setElements(toys);
+        return Array.from({ length: 20 }).map((_, i) => ({
+            id: i,
+            size: 40 + Math.random() * 60,
+            left: Math.random() * 100,
+            delay: Math.random() * 15,
+            duration: 18 + Math.random() * 20,
+            color: `hsl(${Math.random() * 360}, 85%, 70%)`,
+            type: shapeTypes[Math.floor(Math.random() * shapeTypes.length)],
+        }));
     }, []);
 
 
     return (
         <div className="kids-bg">
-            {/* 🌈 Animated gradient background */}
             <div className="animated-gradient" />
 
-            {/* ☁️ Drifting clouds */}
-            {[...Array(5)].map((_, i) => (
+            {clouds.map((cloud) => (
                 <div
-                    key={`cloud-${i}`}
+                    key={cloud.id}
                     className="cloud"
                     style={{
-                        top: `${10 + Math.random() * 70}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 10}s`,
-                        animationDuration: `${40 + Math.random() * 20}s`,
+                        top: cloud.top,
+                        left: cloud.left,
+                        animationDelay: cloud.animationDelay,
+                        animationDuration: cloud.animationDuration,
                     }}
                 />
             ))}
 
-            {/* 🌟 Twinkling stars */}
-            {[...Array(40)].map((_, i) => (
+            {stars.map((star) => (
                 <div
-                    key={`star-${i}`}
+                    key={star.id}
                     className="star"
                     style={{
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 5}s`,
+                        top: star.top,
+                        left: star.left,
+                        animationDelay: star.animationDelay,
                     }}
                 />
             ))}
 
-            {/* 🎈 Floating toys & balloons */}
-            {elements.map((el) => (
+            {toys.map((toy) => (
                 <div
-                    key={el.id}
-                    className={`toy ${el.type}`}
+                    key={toy.id}
+                    className={`toy ${toy.type}`}
                     style={{
-                        width: el.size,
-                        height: el.size,
-                        left: `${el.left}%`,
-                        backgroundColor: el.color,
-                        animationDelay: `${el.delay}s`,
-                        animationDuration: `${el.duration}s`,
+                        width: toy.size,
+                        height: toy.size,
+                        left: `${toy.left}%`,
+                        backgroundColor: toy.color,
+                        animationDelay: `${toy.delay}s`,
+                        animationDuration: `${toy.duration}s`,
                     }}
                 />
             ))}

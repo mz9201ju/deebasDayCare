@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Section from "../components/Section";
+import Seo from "../components/Seo";
 import { SITE } from "../lib/config";
 import home1 from "../assets/home1.jpg";
 import home2 from "../assets/home2.jpg";
@@ -21,6 +22,25 @@ export default function Home() {
 
     return (
         <div className="space-y-10">
+            <Seo
+                title="Home"
+                description="Deeba's Daycare in Bellevue provides nurturing childcare, enrichment activities, and kindergarten readiness in a warm environment."
+                path="/"
+                jsonLd={{
+                    "@context": "https://schema.org",
+                    "@type": "ChildCare",
+                    name: SITE.name,
+                    telephone: SITE.contact.phone,
+                    address: {
+                        "@type": "PostalAddress",
+                        streetAddress: SITE.contact.address,
+                        addressLocality: "Bellevue",
+                        addressRegion: "WA",
+                        postalCode: "98007",
+                        addressCountry: "US",
+                    },
+                }}
+            />
             {/* Hero */}
             <div
                 className="relative rounded-xl2 text-center overflow-hidden bg-center bg-no-repeat h-200 transition-all duration-1000 ease-in-out"

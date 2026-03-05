@@ -62,22 +62,23 @@ Change these to reskin the site
 }
 
 
-/* Pointer fallback if image fails */
-/* If you want a CSS-only custom cursor fallback: */
-body {
-    cursor: url('/src/assets/cursor.png') 16 16, auto;
-    cursor: none;
+/* Hide default cursor only on pointer devices where custom cursor is rendered. */
+@media (pointer: fine) {
+    body {
+        cursor: none;
+    }
 }
 
-/* Ensure links and buttons don’t override with pointer */
-a,
-a:hover,
-a:focus,
-button,
-button:hover,
-button:focus,
-[role="button"] {
-    cursor: none !important;
+@media (pointer: fine) {
+    a,
+    a:hover,
+    a:focus,
+    button,
+    button:hover,
+    button:focus,
+    [role="button"] {
+        cursor: none !important;
+    }
 }
 
 @keyframes glow {
@@ -337,4 +338,15 @@ section,
 .overlay {
     position: relative;
     z-index: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

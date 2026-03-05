@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Section from "../components/Section";
+import Seo from "../components/Seo";
 import { SITE } from "../lib/config";
 
 export default function ContactUs() {
@@ -26,7 +27,13 @@ export default function ContactUs() {
     };
 
     return (
-        <Section title="Contact Us" subtitle="We’d love to meet your family.">
+        <>
+            <Seo
+                title="Contact"
+                description="Contact Deeba's Daycare in Bellevue to schedule a visit or learn more about enrollment and programs."
+                path="/contact"
+            />
+            <Section title="Contact Us" subtitle="We’d love to meet your family.">
             <div className="card">
                 <form
                     onSubmit={(e) => {
@@ -87,6 +94,7 @@ export default function ContactUs() {
                     </p>
                 </form>
             </div>
-        </Section>
+            </Section>
+        </>
     );
 }

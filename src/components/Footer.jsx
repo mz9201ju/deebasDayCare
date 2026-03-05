@@ -14,19 +14,18 @@ export default function Footer() {
                     {/* Address + Phone */}
                     <div className="space-y-1 select-none">
                         {/* 📍 Address → Opens Google Maps */}
-                        <p
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <button
+                            type="button"
                             className="flex items-center justify-center sm:justify-start gap-2 cursor-pointer hover:text-brand-700 transition"
                             onClick={() =>
                                 window.open(
-                                    "https://www.google.com/maps/place/15216+SE+1st+St,+Bellevue,+WA+98007/@47.609577,-122.1388333,17z/data=!3m1!4b1!4m6!3m5!1s0x54906c3548afcb7d:0x5e788931c8bfb046!8m2!3d47.609577!4d-122.1362584!16s%2Fg%2F11snrb2zgl?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D",
+                                    SITE.contact.mapUrl,
                                     "_blank"
                                 )
                             }
                         >
-                            <span>📍 15216 SE 1st St, Bellevue, WA 98007</span>
-                        </p>
+                            <span>📍 {SITE.contact.address}</span>
+                        </button>
                         {/* 📞 Phone → Opens Dialer (mobile only) */}
                         <p
                             className="flex items-center justify-center sm:justify-start gap-2 cursor-pointer font-medium text-brand-600 hover:text-brand-700 transition"
@@ -41,7 +40,7 @@ export default function Footer() {
                                 }
                             }}
                         >
-                            📞 <span>(206) 331-1792</span>
+                            📞 <span>{SITE.contact.phone}</span>
                         </p>
                         {/* Hours of Operation */}
                         <p className="mt-2 text-sm text-brand-700/90">
