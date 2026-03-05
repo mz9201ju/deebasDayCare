@@ -2,7 +2,9 @@
 
 ## Windows Command Requirement
 
-Use `npm.cmd` for package and script execution in this repo.
+Always use `npm.cmd` for package and script execution in this repo.
+
+Do not use plain `npm` unless PowerShell execution policy is bypassed first.
 
 If you must run plain `npm`, launch PowerShell with:
 
@@ -20,7 +22,7 @@ Maintain a clean, production-ready daycare website with strict separation of con
 2. Remove dead code and unused assets safely.
 3. Keep business logic in `src/services` and content in `src/content`.
 4. Keep route metadata updated through `Seo` usage.
-5. Validate with a combined command before finalizing: `npm.cmd run lint; npm.cmd run build`.
+5. Validate before finalizing using lint and build together in one run: `npm.cmd run lint; npm.cmd run build`.
 
 ## Architecture Quick Map
 

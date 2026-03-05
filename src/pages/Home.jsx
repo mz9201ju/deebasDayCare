@@ -50,17 +50,15 @@ export default function Home() {
                     backgroundPosition: "center",
                 }}
             >
-                {/* 🔥 Fade overlay */}
-                <div className="absolute inset-0 bg-black/45 transition-opacity duration-1000"></div>
+                {/* Warm tint overlay to keep text readable without making the hero look gray */}
+                <div className="absolute inset-0 bg-gradient-to-b from-amber-900/25 via-orange-700/20 to-amber-500/15 transition-opacity duration-1000"></div>
 
                 {/* Content above overlay */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
                     <h1
                         className="mt-2 text-3xl sm:text-5xl font-extrabold text-white drop-shadow-lg leading-tight"
                         style={{
-                            textShadow:
-                                "0 0 8px #ff00ff, 0 0 12px #00ffff, 0 0 16px #ff0000, 0 0 20px #00ff00",
-                            animation: "glow 3s linear infinite",
+                            textShadow: "0 0 10px rgba(251, 191, 36, 0.65), 0 2px 8px rgba(120, 53, 15, 0.85)",
                         }}
                     >
                         {SITE.hero.title}

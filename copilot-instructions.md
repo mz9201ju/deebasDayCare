@@ -2,7 +2,9 @@
 
 ## Windows Command Requirement
 
-Use `npm.cmd` instead of `npm` when running scripts in this repository.
+Always use `npm.cmd` instead of `npm` when running scripts in this repository.
+
+Run plain `npm` only if PowerShell execution policy is bypassed first.
 
 If plain `npm` is required, first run:
 
@@ -34,7 +36,7 @@ powershell -ExecutionPolicy Bypass
 
 ## Validation
 
-Run after edits:
+Always run this combined validation after edits (lint and build together):
 
 ```powershell
 npm.cmd run lint; npm.cmd run build

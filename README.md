@@ -4,7 +4,9 @@ Modern React + Vite website for Deeba's Daycare in Bellevue, WA.
 
 ## Windows Command Requirement
 
-Use `npm.cmd` instead of `npm` for all commands in this project.
+Always use `npm.cmd` instead of `npm` for all commands in this project.
+
+Use plain `npm` only when PowerShell execution policy is bypassed first.
 
 If you need to run plain `npm`, execute PowerShell with bypass policy first:
 
@@ -63,7 +65,7 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
-Lint and build (combined):
+Always run lint and build together after code edits:
 
 ```powershell
 npm.cmd run lint; npm.cmd run build

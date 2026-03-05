@@ -40,6 +40,7 @@ export default function Seo({ title, description, path = '/', jsonLd }) {
     upsertMeta('name', 'twitter:title', finalTitle)
     upsertMeta('name', 'twitter:description', finalDescription)
     upsertMeta('name', 'twitter:image', `${SITE.seo.siteUrl}${SITE.seo.defaultImage}`)
+    upsertMeta('name', 'theme-color', '#FFF7F0')
     upsertLink('canonical', canonical)
 
     let script

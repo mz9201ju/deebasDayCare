@@ -26,6 +26,8 @@ export default function ContactUs() {
         window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
     };
 
+    const phoneHref = `tel:${SITE.contact.phone.replace(/[^\d+]/g, "")}`;
+
     return (
         <>
             <Seo
@@ -90,7 +92,13 @@ export default function ContactUs() {
                     </button>
 
                     <p className="text-sm text-brand-700/80 mt-2">
-                        Or reach us at {SITE.contact.phone}
+                        Or reach us at{" "}
+                        <a
+                            href={phoneHref}
+                            className="font-semibold text-brand-700 underline decoration-brand-400 underline-offset-2 hover:text-brand-800"
+                        >
+                            {SITE.contact.phone}
+                        </a>
                     </p>
                 </form>
             </div>
