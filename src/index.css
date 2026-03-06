@@ -314,8 +314,28 @@ Change these to reskin the site
     animation: footerCredit3DPulse 2.6s ease-in-out infinite;
 }
 
+@keyframes rollingHeart {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rolling-heart {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    animation: rollingHeart 1.8s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .footer-credit-3d {
+        animation: none;
+    }
+
+    .rolling-heart {
         animation: none;
     }
 }

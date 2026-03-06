@@ -61,7 +61,7 @@ export default function Footer() {
                             rel="noopener noreferrer"
                             className="footer-credit-3d hover:text-brand-700 transition"
                         >
-                            Made with ❤️ for happy kiddos.
+                            Made with <span className="rolling-heart">❤️</span> for happy kiddos.
                         </a>
 
                         <a
