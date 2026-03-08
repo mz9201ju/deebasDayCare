@@ -20,7 +20,7 @@ export default function ContactUs() {
         );
 
         // 👇 Replace this email with your daycare email address
-        const to = "deebaqadri@hotmail.com";
+        const to = "deebasdaycare@gmail.com";
 
         // opens default mail app with prefilled fields
         window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
