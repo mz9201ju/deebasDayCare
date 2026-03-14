@@ -110,7 +110,7 @@ export default function ContactUs() {
                     <ul className="list-disc pl-6 space-y-2">
                         <li>
                             <a
-                                href="/src/assets/CertificateImmunizationStatusForm%20348-013.pdf"
+                                href="/assets/CertificateImmunizationStatusForm%20348-013.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-brand-700 underline hover:text-brand-800"
@@ -120,7 +120,7 @@ export default function ContactUs() {
                         </li>
                         <li>
                             <a
-                                href="/src/assets/Child%20Care%20Agreement%2015-943.pdf"
+                                href="/assets/Child%20Care%20Agreement%2015-943.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-brand-700 underline hover:text-brand-800"
@@ -130,7 +130,7 @@ export default function ContactUs() {
                         </li>
                         <li>
                             <a
-                                href="/src/assets/Child%20Care%20Parent%20Guardian%20Permissions%2015-897.pdf"
+                                href="/assets/Child%20Care%20Parent%20Guardian%20Permissions%2015-897.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-brand-700 underline hover:text-brand-800"
@@ -140,7 +140,7 @@ export default function ContactUs() {
                         </li>
                         <li>
                             <a
-                                href="/src/assets/Child%20Care%20Registration%20Form%2015-879.pdf"
+                                href="/assets/Child%20Care%20Registration%20Form%2015-879.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-brand-700 underline hover:text-brand-800"
