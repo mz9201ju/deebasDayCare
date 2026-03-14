@@ -106,7 +106,7 @@ export default function ContactUs() {
 
             {/* Enrollment Forms Section */}
             <Section title="Enrollment Forms" subtitle="Download and complete the required forms to enroll your child.">
-                <div className="card mt-8">
+                <div className="card mt-0">
                     <ul className="list-disc pl-6 space-y-2">
                         <li>
                             <a
