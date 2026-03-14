@@ -20,7 +20,7 @@ export default function ContactUs() {
         );
 
         // 👇 Replace this email with your daycare email address
-        const to = "deebasdaycare@gmail.com";
+        const to = "info@deebasdaycare.com";
 
         // opens default mail app with prefilled fields
         window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
@@ -102,6 +102,70 @@ export default function ContactUs() {
                     </p>
                 </form>
             </div>
+            </Section>
+
+            {/* Enrollment Forms Section */}
+            <Section title="Enrollment Forms" subtitle="Download and complete the required forms to enroll your child.">
+                <div className="card mt-8">
+                    <ul className="list-disc pl-6 space-y-2">
+                        <li>
+                            <a
+                                href="/src/assets/CertificateImmunizationStatusForm%20348-013.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brand-700 underline hover:text-brand-800"
+                            >
+                                Certificate of Immunization Status (Form 348-013)
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/src/assets/Child%20Care%20Agreement%2015-943.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brand-700 underline hover:text-brand-800"
+                            >
+                                Child Care Agreement (Form 15-943)
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/src/assets/Child%20Care%20Parent%20Guardian%20Permissions%2015-897.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brand-700 underline hover:text-brand-800"
+                            >
+                                Child Care Parent/Guardian Permissions (Form 15-897)
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/src/assets/Child%20Care%20Registration%20Form%2015-879.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-brand-700 underline hover:text-brand-800"
+                            >
+                                Child Care Registration Form (Form 15-879)
+                            </a>
+                        </li>
+                    </ul>
+                    <p className="mt-4 text-sm text-brand-700/80">
+                        Please download, fill out, and return the completed forms to
+                        <span className="block my-3">
+                            <a
+                                href="mailto:info@deebasdaycare.com"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-yellow-100 border border-yellow-400 text-brand-900 font-bold shadow-sm hover:bg-yellow-200 transition-colors duration-150"
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-yellow-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.659 1.591l-7.5 7.5a2.25 2.25 0 01-3.182 0l-7.5-7.5A2.25 2.25 0 012.25 6.993V6.75" />
+                                </svg>
+                                info@deebasdaycare.com
+                            </a>
+                        </span>
+                        or bring them in person.
+                    </p>
+                </div>
             </Section>
         </>
     );

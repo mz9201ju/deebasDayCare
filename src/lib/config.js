@@ -12,9 +12,9 @@ export const SITE = {
     },
     contact: {
         phone: '(206) 331-1792',
-        address: '15216 SE 1st St Bellevue, WA 98007',
+        address: '15219 SE 1st St Bellevue, WA 98007',
         mapUrl:
-            'https://www.google.com/maps/place/15216+SE+1st+St,+Bellevue,+WA+98007/@47.609577,-122.1388333,17z/data=!3m1!4b1!4m6!3m5!1s0x54906c3548afcb7d:0x5e788931c8bfb046!8m2!3d47.609577!4d-122.1362584!16s%2Fg%2F11snrb2zgl?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D',
+            'https://www.google.com/maps/place/15219+SE+1st+St,+Bellevue,+WA+98007/@47.6091663,-122.1387439,17z/data=!3m1!4b1!4m6!3m5!1s0x54906c35528478e7:0xb9328b252ea35bf2!8m2!3d47.6091663!4d-122.136169!16s%2Fg%2F11c1zrjvf4?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D',
     },
     seo: {
         siteUrl: 'https://deebasdaycare.com',
